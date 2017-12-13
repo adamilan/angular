@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="submit(form)" novalidate>
+  <h1 mat-dialog-title matTooltip="Tooltip!" matTooltipPosition="below">Add file</h1>
+
+  <mat-dialog-content>
+    <!-- hintLabel="Min 5 characters" -->
+    <mat-form-field mat-tooltip="hello"  >
+      <mat-label>First Name</mat-label>
+     <input matInput formControlName="firstname"   placeholder="Enter First Name">
+     <mat-hint>Errors appear instantly!</mat-hint>
+     <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+      </mat-error> -->
+      <mat-error *ngIf="!(form.controls.firstname.valid || (form.controls.firstname.pristine && !submitted))">
+        Minimum 5 characters
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+     <input matInput formControlName="lastname" placeholder="Enter Last Name">
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" type="submit">Add</button>
+    <button mat-raised-button type="button" mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+
+</form>
